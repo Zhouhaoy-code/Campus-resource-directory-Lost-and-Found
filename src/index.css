@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-p4-yellow: #FDF100;
+  --color-p4-yellow-pale: #FFE54C;
+  --color-p4-orange: #FF9000;
+  --color-p4-cyan: #00BCFF;
+  --color-p4-magenta: #FF0090;
+  --color-p4-dark: #0F0F14;
+  --color-p4-pure: #000000;
+  --color-p4-card: #1C1C24;
+  --color-p4-light: #F2F2F7;
+  --color-p4-gray: #2C2C38;
+}
+
+/* Custom Persona 4 Styles */
+@layer utilities {
+  /* Slanted Cut Out Clip Paths (softer angles for P4 POP TV screens) */
+  .clip-slant-right {
+    clip-path: polygon(0 0, 100% 1.5%, 100% 100%, 0 98.5%);
+  }
+  .clip-slant-left {
+    clip-path: polygon(0 1.5%, 100% 0, 100% 98.5%, 0 100%);
+  }
+  .clip-sharp {
+    clip-path: polygon(1.5% 0, 100% 0%, 98.5% 100%, 0% 100%);
+  }
+  .clip-badge {
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  }
+  .clip-ticket {
+    clip-path: polygon(0% 10%, 4% 10%, 4% 0%, 96% 0%, 96% 10%, 100% 10%, 100% 90%, 96% 90%, 96% 100%, 4% 100%, 4% 90%, 0% 90%);
+  }
+
+  /* P4 Halftone/Striped/Checkered Backgrounds styling */
+  .bg-halftone {
+    background-image: radial-gradient(#FDF100 15%, transparent 16%);
+    background-size: 10px 10px;
+  }
+  
+  .bg-dots {
+    background-image: radial-gradient(rgba(253, 241, 0, 0.15) 12%, transparent 13%);
+    background-size: 14px 14px;
+  }
+
+  /* Retro P4 yellow-black checkers */
+  .bg-checkers {
+    background-color: #0F0F14;
+    background-image: linear-gradient(45deg, #1C1C24 25%, transparent 25%), 
+                      linear-gradient(-45deg, #1C1C24 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #1C1C24 75%), 
+                      linear-gradient(-45deg, transparent 75%, #1C1C24 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+
+  .bg-yellow-checkers {
+    background-color: #fce300;
+    background-image: linear-gradient(45deg, #000000 25%, transparent 25%), 
+                      linear-gradient(-45deg, #000000 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #000000 75%), 
+                      linear-gradient(-45deg, transparent 75%, #000000 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.2) 15%, transparent 16%);
+  }
+
+  /* Multi-colored P4 rainbow stripes */
+  .bg-rainbow-stripes {
+    background: linear-gradient(
+      90deg,
+      #FDF100 0%, #FDF100 20%,
+      #FF9000 20%, #FF9000 40%,
+      #FF0090 40%, #FF0090 60%,
+      #00BCFF 60%, #00BCFF 80%,
+      #F7F7FA 80%, #F7F7FA 100%
+    );
+  }
+
+  .bg-stripes {
+    background: repeating-linear-gradient(
+      -45deg,
+      #0F0F14,
+      #0F0F14 10px,
+      rgba(253, 241, 0, 0.12) 10px,
+      rgba(253, 241, 0, 0.12) 20px
+    );
+  }
+
+  .bg-danger-stripes {
+    background: repeating-linear-gradient(
+      45deg,
+      #FDF100,
+      #FDF100 12px,
+      #000000 12px,
+      #000000 24px
+    );
+  }
+
+  /* TV Scanlines overlay */
+  .bg-scanlines {
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+  }
+  
+  .shadow-p4-retro {
+    filter: drop-shadow(4px 4px 0px #FDF100);
+  }
+  
+  .shadow-p4-black {
+    filter: drop-shadow(5px 5px 0px #000000);
+  }
+
+  .shadow-p4-glow {
+    filter: drop-shadow(0px 0px 12px rgba(253, 241, 0, 0.6));
+  }
+
+  .shadow-p4-rainbow {
+    box-shadow: 4px 4px 0px #FDF100, 8px 8px 0px #FF9000, 12px 12px 0px #FF0090;
+  }
+
+  .font-stroke-black {
+    -webkit-text-stroke: 1.5px #000000;
+  }
+
+  .font-stroke-white {
+    -webkit-text-stroke: 1.5px #FFFFFF;
+  }
+}
+
+/* Animations and Transitions */
+@keyframes pulse-star {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.15) rotate(45deg); opacity: 1; }
+}
+
+@keyframes scanline-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.animate-pulse-star {
+  animation: pulse-star 3s infinite ease-in-out;
+}
+
+body {
+  background-color: var(--color-p4-dark);
+  color: var(--color-p4-light);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F0F14;
+}
+::-webkit-scrollbar-thumb {
+  background: #FDF100;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9000;
+}

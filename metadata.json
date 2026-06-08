@@ -1,0 +1,6 @@
+{
+  "name": "WAB Campus Directory & Lost and Found",
+  "description": "A stylish, mobile-friendly campus directory and real-time student lost-and-found portal for the WAB community, styled in a sleek high-contrast retro yellow aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
